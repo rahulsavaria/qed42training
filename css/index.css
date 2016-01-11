@@ -1,0 +1,21 @@
+body{
+  background: black;
+}
+#container{
+  margin-top: 500px;
+}
+.btn{
+  height: 80px;
+  width :150px;
+  margin-left: 80px;
+  border-radius: 20px;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+  background-color: orange;
+}
+.btn:hover{
+  cursor: pointer;;
+  background-color: #ff0000;
+}
+
