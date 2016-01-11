@@ -3,19 +3,30 @@
 
    session_start();
    $user_id=$_SESSION['user_id'];
- include("../authentication.php");
+    include("../authentication.php");
+    if($user_id == null){
+      header("Location: http://localhost/qed42training/html/login.html");
+    }
     $conn = mysqli_connect($servername, $username, $password, $dbname);
     if (!$conn)
     {
        die("Connection failed: " . mysqli_connect_error());
     }
+    $sql1="select u_name from user where u_id=".$user_id.";";
+    
+    $res1=mysqli_query($conn,$sql1);
+    $row=mysqli_fetch_row($res1);
+    $userna=$row[0];
 
     $sql = "select * from user";
+
     $result=mysqli_query($conn,$sql);
+    
     $num_rows = mysqli_num_rows($result);
+    //var_dump($num_rows); 
 
 
-
+echo "hello-------".$userna;
  ?>
 <html>
 <head>
@@ -25,6 +36,9 @@
   </head>
   <body>
     <div style="overflow-x:auto;">
+      <form action ="logout.php" method="post">
+        <input type="submit" value="logout">
+      </form>
      <table id="recordstable" cellspacing="0">
 
           <th class="sortable" onclick="sort_table(0);">UID</th>
