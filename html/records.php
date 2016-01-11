@@ -1,5 +1,9 @@
 <?php
 
+   session_start();
+   $_SESSION['user_id']=$user_id;
+  include "../authentication.php";
+
     $conn = mysqli_connect($servername, $username, $password, $dbname);
     if (!$conn)
     {
@@ -31,7 +35,7 @@
           <th>mobile</th>
            <tbody id="people">
       <?php
-        while($row=mysqli_fetch_assoc($result))
+        while($row=mysqli_fetch_array($result))
         {
           echo "<tr>";
           echo "<td >" .$row['u_id']."</td>";
