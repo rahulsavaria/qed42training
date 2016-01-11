@@ -19,4 +19,5 @@ if (!$conn) {
 		echo "nto----------";
 	}
 	unset($_SESSION['genpassword']);
+	header("Location:http://localhost/qed42training/html/login.html");
 }
