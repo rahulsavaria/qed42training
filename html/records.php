@@ -2,8 +2,8 @@
 
 
    session_start();
-   $_SESSION['user_id']=$user_id;
- includes("../authentication.php");
+   $user_id=$_SESSION['user_id'];
+ include("../authentication.php");
     $conn = mysqli_connect($servername, $username, $password, $dbname);
     if (!$conn)
     {
@@ -14,7 +14,6 @@
     $result=mysqli_query($conn,$sql);
     $num_rows = mysqli_num_rows($result);
 
-  echo "$num_rows Rows\n";
 
 
  ?>

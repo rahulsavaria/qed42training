@@ -1,31 +1,37 @@
 <?php
 session_start();
 
-$username = $_POST["user"];
-$password = $_POST["pass"];
+$uname = $_POST["user"];
+$password1 = $_POST["pass"];
 
-#Connect with mysql-server
-$conn = mysqli_connect('localhost','root','mysql360') /*or die("FAILED TO CONNECT WITH mysql-server".mysqli_connect_error())*/;
 
-#Verify input username and password from database
-mysqli_select_db($conn,"qed42") or die('oops database selection problem ! --> '.mysqli_error());
 
-$res=mysqli_query($conn,"SELECT * FROM user WHERE u_name='$username'");
+include "authentication.php";
+ $con = mysqli_connect($servername, $username, $password, $dbname);
+ if (!$con)
+    {
+       die("Connection failed: " . mysqli_connect_error());
+    }
 
-if(!$res)
-	{ echo "<script type="text/javascript">alert("Invalid username")';'</script>";} 
-else 
-	{
-		$row=mysqli_fetch_array($res);
-		if($row['u_password']==$password)
+$sql="SELECT u_password FROM user WHERE u_name='".$uname."';";
+
+
+$res=mysqli_query($con,$sql);
+$row=mysqli_fetch_row($res);
+
+
+ 		if($row[0]==$password1)
  			{
-  				$user_id = $row['u_id'];
-  				$_SESSION['user_id']=$user_id;
-  				header("Location: records.php");
 
- 			}
- 		else
- 		{ echo "<script>alert('Invalid password')';'</script>"; }
-        
- 	}
-?> 	
+   				$user_id = $row['u_id'];
+   				$_SESSION['user_id']=$user_id;
+
+
+   				header("Location: http://localhost/qed42training/html/records.php");
+
+  			}
+  		else
+  		{ echo "<script>alert('Invalid password')';'</script>";
+
+  	}
+?>
