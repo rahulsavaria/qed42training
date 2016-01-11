@@ -15,7 +15,7 @@ for($i=0 ;$i<strlen($u_password);$i++)
 
 
 
-$servername = "localhost";
+$servername  = "localhost";
 $username = "root";
 $password = "root";
 $dbname = "drupal";
