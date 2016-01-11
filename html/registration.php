@@ -15,7 +15,7 @@ for($i=0 ;$i<strlen($u_password);$i++)
 
 
 
-include "authentication.php";
+include "../authentication.php";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
