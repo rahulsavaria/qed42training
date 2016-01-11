@@ -18,5 +18,5 @@ if (!$conn) {
 	if(!$result){
 		echo "nto----------";
 	}
-	echo $sql;
+	unset($_SESSION['genpassword']);
 }
