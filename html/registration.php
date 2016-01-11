@@ -15,10 +15,7 @@ for($i=0 ;$i<strlen($u_password);$i++)
 
 
 
-$servername  = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "drupal";
+include "authentication.php";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
