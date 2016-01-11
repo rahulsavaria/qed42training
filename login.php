@@ -20,7 +20,9 @@ else
 		if($row['u_password']==$password)
  			{
   				$user_id = $row['u_id'];
+  				$_SESSION['user_id']=$user_id;
   				header("Location: records.php");
+
  			}
  		else
  		{ echo "<script>alert('Invalid password')';'</script>"; }
