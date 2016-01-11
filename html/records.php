@@ -1,9 +1,9 @@
 <?php
 
+
    session_start();
    $_SESSION['user_id']=$user_id;
-  include "../authentication.php";
-
+ includes("../authentication.php");
     $conn = mysqli_connect($servername, $username, $password, $dbname);
     if (!$conn)
     {
