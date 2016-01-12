@@ -48,7 +48,17 @@ $sql = "INSERT INTO user (u_name,u_password,u_email,u_mobile)
 
 			if (mysqli_query($conn, $sql)) 
 			{
-    			echo "<script type='text/javascript'>alert('Registration successful')</script>";
+    			session_start();
+    			$sql1="select u_id from user where u_email='".$u_emailid."';";
+    			echo $sql1;
+    				
+    			$res1=mysqli_query($conn,$sql1);
+    			$row=mysqli_fetch_row($res1);
+    			$u_id=$row[0];
+    			echo $u_id;
+    		
+    			$_SESSION['user_id']=$u_id;
+    			//echo "<script type='text/javascript'>alert('Registration successful')</script>";
      			header("Location:http://localhost/qed42training/html/records.php");
 			}
  			else 
