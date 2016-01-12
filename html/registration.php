@@ -27,38 +27,38 @@ $flag=true;
 $sql ="select u_email from user;";
 $result=mysqli_query($conn,$sql);
 	while ($row=mysqli_fetch_array($result)) {
-		
+
 		if($u_emailid==$row[0])
 		{
 		   echo "<script type='text/javascript'>alert('ajskdfksjd');</script>";
-		  
+
 		   $flag=false;
 		break;
 		}
 
-		
+
 
 }
 
 if($flag==true)
 {
 
-$sql = "INSERT INTO user (u_name,u_password,u_email,u_mobile)
-			VALUES ('$u_username','$fpass','$u_emailid','$u_phoneno')";
+$sql = "INSERT INTO user (u_name,u_username,u_password,u_email,u_mobile)
+			VALUES ('$name','$u_username','$fpass','$u_emailid','$u_phoneno')";
 
-			if (mysqli_query($conn, $sql)) 
+			if (mysqli_query($conn, $sql))
 			{
     			echo "<script type='text/javascript'>alert('Registration successful')</script>";
      			header("Location:http://localhost/qed42training/html/records.php");
 			}
- 			else 
+ 			else
  			{
     			echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 			}
 }else
 {
 	//header("Location:http://localhost/qed42training/html/registration.html");
-	
+
 }
 mysqli_close($conn);
 
