@@ -3,6 +3,8 @@
 
    session_start();
    $user_id=$_SESSION['user_id'];
+   var_dump($_SESSION);
+   
     include("../authentication.php");
     if($user_id == null){
       header("Location: http://localhost/qed42training/html/login.html");
