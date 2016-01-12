@@ -4,12 +4,7 @@ $u_username=$_POST['username'];
 $u_password=$_POST['password'];
 $u_emailid=$_POST['emailid'];
 $u_phoneno=$_POST['mobno'];
-$fpass="";
-$pass=str_split($u_password);
-for($i=0 ;$i<strlen($u_password);$i++)
-{
-   $fpass = $fpass.ord($pass[$i]);
-}
+
 
 
 
@@ -30,7 +25,7 @@ $result=mysqli_query($conn,$sql);
 
 		if($u_emailid==$row[0])
 		{
-		   echo "<script type='text/javascript'>alert('ajskdfksjd');</script>";
+		   echo "<script type='text/javascript'>alert('Email already exit');</script>";
 
 		   $flag=false;
 		break;
@@ -44,30 +39,27 @@ if($flag==true)
 {
 
 $sql = "INSERT INTO user (u_name,u_username,u_password,u_email,u_mobile)
-			VALUES ('$name','$u_username','$fpass','$u_emailid','$u_phoneno')";
+			VALUES ('$u_name','$u_username','$u_password','$u_emailid','$u_phoneno')";
 
 			if (mysqli_query($conn, $sql))
 			{
     			session_start();
     			$sql1="select u_id from user where u_email='".$u_emailid."';";
-    			echo $sql1;
-    				
+    			//echo $sql1;
+
     			$res1=mysqli_query($conn,$sql1);
     			$row=mysqli_fetch_row($res1);
     			$u_id=$row[0];
-    			echo $u_id;
-    		
+    			//echo $u_id;
+
     			$_SESSION['user_id']=$u_id;
     			//echo "<script type='text/javascript'>alert('Registration successful')</script>";
      			header("Location:http://localhost/qed42training/html/records.php");
 			}
- 			else
- 			{
-    			echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-			}
+
 }else
 {
-	//header("Location:http://localhost/qed42training/html/registration.html");
+	echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 
 }
 mysqli_close($conn);

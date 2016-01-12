@@ -10,11 +10,13 @@
       alert("password not matched");
       return false;
 
+
     }
     else if(a.length<8)
     {
       alert("password should contain atleast 8 characters");
       return false;
+
 
     }
     else if (isNaN(c) || c.length<10 || c.length>10)
